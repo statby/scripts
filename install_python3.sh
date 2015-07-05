@@ -8,7 +8,6 @@ fi
 function fixcode (){
 echo "Installing environment !"
 yum -y install readline* zlib zlib-devel openssl openssl-devel gcc libxslt-devel libxml2-devel >/dev/null 2>&1  
-
 }
 
 function installpython (){
