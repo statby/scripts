@@ -24,9 +24,34 @@ echo "Compiling python3"
 ln -s /usr/local/python34/bin/python3 /usr/bin/python3
 }
 
-fixcode
-installpython
+function installsetuptools (){
+mkdir -p /opt/download
+cd /opt/download
+[ -e setuptools-18.0.1.tar.gz   ] && rm -rf  setuptools-18.0.1.tar.gz ||wget https://pypi.python.org/packages/source/s/setuptools/setuptools-18.0.1.tar.gz >/dev/null 2>&1
+echo "Downloading setuptools !"
+wget https://pypi.python.org/packages/source/s/setuptools/setuptools-18.0.1.tar.gz >/dev/null 2>&1
+tar -zxf setuptools-18.0.1.tar.gz
+cd setuptools-18.0.1
+echo "Installing setuptools-18.0.1"
+python3 setup.py install >/dev/null 2>&1
+}
 
+function installpip (){
+mkdir -p /opt/download
+cd /opt/download
+[ -e pip-7.0.3.tar.gz   ] && rm -rf  pip-7.0.3.tar.gz ||wget https://pypi.python.org/packages/source/p/pip/pip-7.0.3.tar.gz  >/dev/null 2>&1
+echo "Downloading pip-7.0.3 !"
+wget https://pypi.python.org/packages/source/p/pip/pip-7.0.3.tar.gz  >/dev/null 2>&1
+tar -zxf pip-7.0.3.tar.gz
+cd pip-7.0.3
+echo "Installing pip-7.0.3"
+python3 setup.py install >/dev/null 2>&1
+ln -s /usr/local/python34/bin/pip3 /usr/bin/pip3
+}
+
+
+
+function py3ok (){
 version=`/usr/bin/python3 --version  2>/dev/null|awk '{print $2}'`
 if [ $version = "3.4.3" ]
   then
@@ -34,3 +59,23 @@ if [ $version = "3.4.3" ]
   else
     echo "Something wrong is happen, check it out !"
 fi
+}
+
+function pip3ok (){
+/usr/bin/pip3 -V >/dev/null 2>&1
+if [ $? -eq "0" ]
+  then
+    echo "pip3 is successful install !"
+  else
+    echo "Something wrong is happen, check it out !"
+fi
+}
+
+
+fixcode
+installpython
+installsetuptools
+installpip
+py3ok
+pip3ok
+
