@@ -21,7 +21,7 @@ tar -zxf Python-3.4.3.tgz
 cd Python-3.4.3
 echo "Compiling python3"
 ./configure --prefix=/usr/local/python34  >/dev/null 2>&1 ;make >/dev/null  2>&1 &&make install  >/dev/null 2>&1
-ln -s /usr/local/python34/bin/python3 /usr/bin/python3
+ln -s /usr/local/python34/bin/python3 /usr/bin/python3 >/dev/null 2>&1
 }
 
 function installsetuptools (){
@@ -46,7 +46,7 @@ tar -zxf pip-7.0.3.tar.gz
 cd pip-7.0.3
 echo "Installing pip-7.0.3"
 python3 setup.py install >/dev/null 2>&1
-ln -s /usr/local/python34/bin/pip3 /usr/bin/pip3
+ln -s /usr/local/python34/bin/pip3 /usr/bin/pip3 >/dev/null 2>&1
 }
 
 
