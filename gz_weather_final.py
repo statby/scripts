@@ -12,7 +12,8 @@ gz_7= "http://www.weather.com.cn/weather/101280101.shtml"
 sg_7 = "http://www.weather.com.cn/weather/101280201.shtml"
 bj_7 = "http://www.weather.com.cn/weather/101010100.shtml"
 
-r = requests.get(gz_7,headers=header)
+r = requests.Session().get(gz_7,headers=header)
+
 web_encoding = (r.encoding)
 web_text = r.text
 web_headers = (r.headers)
