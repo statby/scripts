@@ -7,7 +7,8 @@ x = 5
 
 now_str = datetime.datetime.now().strftime("%s")
 now_array = time.localtime(float(now_str))
-now_human = time.strftime("%Y%m%d %H:%M:%S",now_array)
+#now_human = time.strftime("%Y%m%d %H:%M:%S",now_array)
+now_human = time.strftime("%Y%m%d %Y-%M-%D",now_array)
 xminutes_ago_human = (datetime.datetime.now()-datetime.timedelta(minutes=int(x))).strftime("%Y%m%d %H:%M:%S")
 xminutes_ago_str = (datetime.datetime.now()-datetime.timedelta(minutes=int(x))).strftime("%s")
 
