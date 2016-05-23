@@ -19,3 +19,10 @@ source /etc/profile
 PS1="[\u@$HOSTNAME \W]\$"
 
 echo "If you want to take effect immediately, please excute with source but not bash !"
+
+
+
+
+
+
+
